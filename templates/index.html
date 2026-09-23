@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Complaint Register</title>
+</head>
+<body>
+
+    <h1>Student Complaint Register</h1>
+
+    <h2>Submit a Complaint</h2>
+
+    <form method="POST" action="/add">
+
+        <label>Student Name:</label>
+        <input type="text" name="name" required>
+        <br><br>
+
+        <label>Complaint:</label>
+        <input type="text" name="complaint" required>
+        <br><br>
+
+        <label>Category:</label>
+        <select name="category">
+            <option>Academic</option>
+            <option>Hostel</option>
+            <option>Library</option>
+            <option>Transport</option>
+            <option>Other</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Submit Complaint</button>
+
+    </form>
+
+    <hr>
+
+    <h2>Submitted Complaints</h2>
+
+    {% if complaints %}
+        {% for item in complaints %}
+            <div>
+                <p><strong>Student:</strong> {{ item.name }}</p>
+                <p><strong>Complaint:</strong> {{ item.complaint }}</p>
+                <p><strong>Category:</strong> {{ item.category }}</p>
+                <p><strong>Status:</strong> Pending</p>
+                <hr>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No complaints submitted yet.</p>
+    {% endif %}
+
+    <footer>
+    <p>Commit: {{ commit }}</p>
+</footer>
+
+</body>
+</html>
