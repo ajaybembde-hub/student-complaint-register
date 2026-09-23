@@ -2,7 +2,51 @@
 <html>
 <head>
     <title>Student Complaint Register</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .complaint {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
 </head>
+
 <body>
 
     <h1>Student Complaint Register</h1>
@@ -13,11 +57,9 @@
 
         <label>Student Name:</label>
         <input type="text" name="name" required>
-        <br><br>
 
         <label>Complaint:</label>
         <input type="text" name="complaint" required>
-        <br><br>
 
         <label>Category:</label>
         <select name="category">
@@ -27,24 +69,20 @@
             <option>Transport</option>
             <option>Other</option>
         </select>
-        <br><br>
 
         <button type="submit">Submit Complaint</button>
 
     </form>
 
-    <hr>
-
     <h2>Submitted Complaints</h2>
 
     {% if complaints %}
         {% for item in complaints %}
-            <div>
+            <div class="complaint">
                 <p><strong>Student:</strong> {{ item.name }}</p>
                 <p><strong>Complaint:</strong> {{ item.complaint }}</p>
                 <p><strong>Category:</strong> {{ item.category }}</p>
-                <p><strong>Status:</strong> Pending</p>
-                <hr>
+                <p><strong>Status:</strong> {{ item.status }}</p>
             </div>
         {% endfor %}
     {% else %}
@@ -52,8 +90,8 @@
     {% endif %}
 
     <footer>
-    <p>Commit: {{ commit }}</p>
-</footer>
+        <p>Running Commit: {{ commit }}</p>
+    </footer>
 
 </body>
 </html>
