@@ -43,3 +43,22 @@ def test_invalid_complaint():
     )
 
     assert response.status_code == 400
+
+
+def test_api_complaints():
+    client = app.test_client()
+
+    complaints.clear()
+
+    complaints.append({
+        "name": "API Student",
+        "complaint": "Library book issue",
+        "category": "Library",
+        "status": "Pending"
+    })
+
+    response = client.get("/api/complaints")
+
+    assert response.status_code == 200
+    assert response.json[0]["name"] == "API Student"
+    assert response.json[0]["category"] == "Library"
