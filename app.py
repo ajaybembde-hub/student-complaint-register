@@ -20,7 +20,10 @@ def add_complaint():
     category = request.form.get("category", "").strip()
 
     if not name or not complaint or not category:
-        return "All fields are required", 400
+        return render_template(
+            "error.html",
+            message="All fields are required"
+        ), 400
 
     complaints.append({
         "name": name,
