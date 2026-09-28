@@ -9,15 +9,22 @@
             max-width: 900px;
             margin: 40px auto;
             padding: 20px;
+            background-color: #f5f5f5;
         }
 
         h1 {
             text-align: center;
         }
 
+        h2 {
+            margin-top: 30px;
+        }
+
         form {
+            background-color: white;
             padding: 20px;
             border: 1px solid #ccc;
+            border-radius: 8px;
             margin-bottom: 30px;
         }
 
@@ -31,12 +38,20 @@
         button {
             padding: 10px 20px;
             cursor: pointer;
+            border: none;
+            border-radius: 5px;
         }
 
         .complaint {
+            background-color: white;
             border: 1px solid #ddd;
+            border-radius: 8px;
             padding: 15px;
             margin-bottom: 15px;
+        }
+
+        .status {
+            font-weight: bold;
         }
 
         footer {
@@ -82,7 +97,9 @@
                 <p><strong>Student:</strong> {{ item.name }}</p>
                 <p><strong>Complaint:</strong> {{ item.complaint }}</p>
                 <p><strong>Category:</strong> {{ item.category }}</p>
-                <p><strong>Status:</strong> {{ item.status }}</p>
+                <p class="status">
+                    <strong>Status:</strong> {{ item.status }}
+                </p>
             </div>
         {% endfor %}
     {% else %}
